@@ -43,13 +43,13 @@ import { useTheme } from '../../common/ThemeContext';
         </h2>
 
         <span>
-            <a href='x.com' target='_blank' >
+            <a href='https://x.com/OshanHarshad1' target='_blank' >
                 <img src={xIcon} alt='x_icon'/>
             </a>
-            <a href='github.com' target='_blank' >
+            <a href='https://github.com/oshanh' target='_blank' >
                 <img src={githubIcon} alt='github_icon'/>
             </a>
-            <a href='linkedin.com' target='_blank' >
+            <a href='https://lk.linkedin.com/in/oshan-harshad-580a39258' target='_blank' >
                 <img src={linkedinIcon} alt='linkedin_icon'/>
             </a>
             
