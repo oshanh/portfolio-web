@@ -12,10 +12,11 @@ function Projects() {
   return (
     <section id="projects" className={styles.container}>
       <h1 className="sectionTitle" >Projects</h1>
+
       <div className={styles.projectsContainer}>
-        <ProjectCard icon={ExploreWild} link="https://github.com/oshanh/explorewild_JavaFX" title="ExploreWild" des="Zoo mamagement Application"/>
-        <ProjectCard icon={TradeManager} link="https://github.com/oshanh/TradeManager" title="TradeManager" des="USD buy & sell"/>
-        <ProjectCard icon={YouHeal} link="https://github.com/oshanh/Hospital-website" title="YouHeal Web" des="Website for a Hospital"/>
+        <ProjectCard styles="{styles.project}" icon={ExploreWild} link="https://github.com/oshanh/explorewild_JavaFX" title="ExploreWild" des="Zoo Management Application"/>
+        <ProjectCard styles="styles.project" icon={TradeManager} link="https://github.com/oshanh/TradeManager" title="TradeManager" des="USD buy & sell"/>
+        <ProjectCard styles="styles.project" icon={YouHeal} link="https://github.com/oshanh/Hospital-website" title="YouHeal Web" des="Website for a Hospital"/>
       </div>
     </section>
   );
