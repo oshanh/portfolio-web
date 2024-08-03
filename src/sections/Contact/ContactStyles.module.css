@@ -1,0 +1,14 @@
+.container{
+    text-align: center;
+
+    img{
+        border-color:2px solid red;
+        transition: 0.5s;
+    }
+    
+    img:hover{
+        scale: 1.15;
+    }
+    
+}
+

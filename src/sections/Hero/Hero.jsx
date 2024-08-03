@@ -39,7 +39,7 @@ import { useTheme } from '../../common/ThemeContext';
         Harshad
         </h1>
         <h2>
-            Blockchain Dev.!
+             Developer
         </h2>
 
         <span>
@@ -55,13 +55,13 @@ import { useTheme } from '../../common/ThemeContext';
             
         </span>
         <p className={styles.description}>
-            Crypto enthusiast with a passion for making blockchain solutions for easyness.
+            Tech enthusiast with a passion for making software solutions for easyness.
         </p>
-        <a href={CV} download>
+        {/* <a href={CV} download>
             <button className='hover'>
                 Resume
             </button>    
-        </a>
+        </a> */}
     </div>
     </section>
   )
