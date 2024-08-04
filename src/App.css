@@ -77,16 +77,6 @@ p {
 .hover {
   cursor: pointer;
 }
-.project{
-  transition: 0.5s;
-  display: flex;
-  flex-direction: row;
-
-}
-.project:hover{
-  scale:1.15;
-}
-
 
 @media (width >= 800px) {
   #root {
@@ -106,14 +96,6 @@ p {
   .sectionTitle {
     margin-bottom: 60px;
   }
-  .project{
-   
-    flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      padding: 0 30px;
-  
-  }
 
   @media (width >= 1400px) {
     #root {
@@ -126,14 +108,5 @@ p {
     .sectionTitle {
       margin-bottom: 75px;
     }
-    .project{
-   
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      padding: 0 30px;
-    
-    }
-
   }
 }
