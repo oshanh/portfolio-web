@@ -1,0 +1,41 @@
+.container{
+    /* width: 25px;
+    height: 100px;
+    background-color: aqua;
+    box-sizing: border-box;
+    */
+    
+    z-index: 1000; 
+    position: fixed;
+    left: 5px;
+    top:250px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    
+    border: 2px solid;
+    border-color: yellow;
+    border-radius: 30px;
+    
+}
+
+.sections{
+    /* width: 25px;
+    height: 25px; 
+    background-color: yellow;
+    background-color: brown;
+    border-radius: 50%;
+    */
+    
+    
+    
+
+    img{
+        width: 25px;
+        height: 25px;
+        transition: 0.5s;
+    }
+    img:hover{
+        scale:1.05;
+    }
+}

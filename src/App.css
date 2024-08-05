@@ -26,13 +26,13 @@ body {
   background-color: var(--background-color);
   display: flex;
   justify-content: center;
-  margin: 0 auto 60px;
+  margin: 0 auto 0px;
 }
 
-#root {
+#sections {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 50px;
 }
 
 h1,
@@ -79,8 +79,8 @@ p {
 }
 
 @media (width >= 800px) {
-  #root {
-    gap: 100px;
+  #sections {
+    gap: 200px;
   }
   h1 {
     font-size: 40px;
@@ -98,8 +98,8 @@ p {
   }
 
   @media (width >= 1400px) {
-    #root {
-      gap: 200px;
+    #sections {
+      gap: 100px;
     }
     h1 {
       font-size: 48px;
