@@ -14,9 +14,14 @@ function Projects() {
       <h1 className="sectionTitle" >Projects</h1>
 
       <div className={styles.projectsContainer}>
-        <ProjectCard  icon={ExploreWild} link="https://github.com/oshanh/explorewild_JavaFX" title="ExploreWild" des="Zoo Management Application"/>
-        <ProjectCard  icon={TradeManager} link="https://github.com/oshanh/TradeManager" title="TradeManager" des="USD buy & sell"/>
-        <ProjectCard  icon={YouHeal} link="https://github.com/oshanh/Hospital-website" title="YouHeal Web" des="Website for a Hospital"/>
+        
+
+        <ProjectCard  icon={ExploreWild} link="https://github.com/oshanh/explorewild_JavaFX" title="ExploreWild" des="Zoo Management Application using JAVAFX"/>
+        <ProjectCard  icon={TradeManager} link="https://github.com/oshanh/TradeManager" title="TradeManager" des="USD buy & sell using Java"/>
+        <ProjectCard  icon={YouHeal} link="https://github.com/oshanh/Hospital-website" title="YouHeal Website" des="Website for a Hospital using pure HTML,CSS & JS"/>
+
+
+
       </div>
     </section>
   );
