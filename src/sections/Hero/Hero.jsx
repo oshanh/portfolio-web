@@ -57,11 +57,11 @@ import { useTheme } from '../../common/ThemeContext';
         <p className={styles.description}>
             Tech enthusiast with a passion for making software solutions for easyness.
         </p>
-        {/* <a href={CV} download>
+        <a href={CV} download>
             <button className='hover'>
                 Resume
             </button>    
-        </a> */}
+        </a>
     </div>
     </section>
   )
