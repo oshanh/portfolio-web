@@ -18,11 +18,11 @@ function Projects() {
       <div className={styles.projectsContainer}>
         
 
-        <ProjectCard  icon={ExploreWild} link="https://github.com/oshanh/explorewild_JavaFX" title="ExploreWild" des="Zoo Management Application using JAVAFX"/>
-        <ProjectCard  icon={TradeManager} link="https://github.com/oshanh/TradeManager" title="TradeManager" des="USD buy & sell using Java"/>
-        <ProjectCard  icon={YouHeal} link="https://github.com/oshanh/Hospital-website" title="YouHeal Website" des="Website for a Hospital using pure HTML,CSS & JS"/>
-        <ProjectCard  icon={RTC} link="https://github.com/SPradeepIndie/MOSAD" title="RTC" des="A E-Business web application for Rashmi Tyre Center"/>
-        <ProjectCard  icon={RuhSchedulEase} link="https://github.com/gimhanadeshan/Group-Project-CSC2233" title="RuhSchedulEase" des="A web application for TimeTable Academic Management"/>
+        <ProjectCard icon={ExploreWild} link="https://github.com/oshanh/explorewild_JavaFX" title="ExploreWild" des="Zoo Management Application using JAVAFX" />
+        <ProjectCard icon={TradeManager} link="https://github.com/oshanh/TradeManager" title="TradeManager" des="USD buy & sell using Java" />
+        <ProjectCard icon={YouHeal} link="https://github.com/oshanh/Hospital-website" title="YouHeal Website" des="Website for a Hospital using pure HTML,CSS & JS" />
+        <ProjectCard icon={RTC} link="https://github.com/SPradeepIndie/MOSAD" title="RTC" des="A E-Business web application for Rashmi Tyre Center" />
+        <ProjectCard icon={RuhSchedulEase} link="https://github.com/gimhanadeshan/Group-Project-CSC2233" title="RuhSchedulEase" des="A web application for TimeTable Academic Management" />
 
 
 
@@ -32,3 +32,5 @@ function Projects() {
 }
 
 export default Projects;
+
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import styles from './HeroStyles.module.css';
 import HeroImg from '../../assets/hero-img.jpg';
 import sun from '../../assets/sun.svg';
@@ -12,58 +13,92 @@ import linkedinIconDark from '../../assets/linkedin-dark.svg';
 import CV from '../../assets/cv.pdf';
 import { useTheme } from '../../common/ThemeContext';
 
- function Hero() {
-    const {theme,toggleTheme}=useTheme();
+function Hero() {
+    const { theme, toggleTheme } = useTheme();
     const themeIcon = theme === 'light' ? sun : moon;
-    const xIcon = theme === 'light' ? xIconLight  : xIconDark;
-    const githubIcon = theme === 'light' ? githubIconLight :githubIconDark ;
-    const linkedinIcon = theme === 'light' ? linkedinIconLight :linkedinIconDark ;
+    const xIcon = theme === 'light' ? xIconLight : xIconDark;
+    const githubIcon = theme === 'light' ? githubIconLight : githubIconDark;
+    const linkedinIcon = theme === 'light' ? linkedinIconLight : linkedinIconDark;
+
+    return (
+        <motion.section 
+            id="hero" 
+            className={styles.container}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+        >
+            <div className={styles.colorModeContainer}>
+
+                {/* Funny Hero Image Wiggle Effect */}
+                <motion.img
+    className={styles.hero}
+    src={HeroImg}
+    alt="hero-img"
+    whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+    transition={{ duration: 0.3 }}
+/>
 
 
 
 
-  return (
-    <section id="hero" className={styles.container}>
-    <div className={styles.colorModeContainer}> 
+                <motion.img
+                    className={styles.colorMode}
+                    src={themeIcon}
+                    alt="theme"
+                    onClick={toggleTheme}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ rotate: 360 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                />
+            </div>
 
-        <img className={styles.hero} src={HeroImg} alt='hero-img'/>
+            <motion.div 
+                className={styles.info}
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+            >
+                <h1>Oshan <br /> Harshad</h1>
+                <h2>Developer</h2>
 
-        <img className={styles.colorMode} src={themeIcon} alt='' onClick={toggleTheme}/>
+                <motion.span
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                >
+                    <motion.a href="https://x.com/OshanHarshad1" target="_blank" whileHover={{ scale: 1.1 }}>
+                        <img src={xIcon} alt="x_icon"/>
+                    </motion.a>
+                    <motion.a href="https://github.com/oshanh" target="_blank" whileHover={{ scale: 1.1 }}>
+                        <img src={githubIcon} alt="github_icon"/>
+                    </motion.a>
+                    <motion.a href="https://lk.linkedin.com/in/oshan-harshad-580a39258" target="_blank" whileHover={{ scale: 1.1 }}>
+                        <img src={linkedinIcon} alt="linkedin_icon"/>
+                    </motion.a>
+                </motion.span>
 
-    </div>
+                <motion.p 
+                    className={styles.description}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 1 }}
+                >
+                    Tech enthusiast with a passion for making software solutions for easyness.
+                </motion.p>
 
-    <div className={styles.info}>
-        <h1>     
-        Oshan 
-        <br />
-        Harshad
-        </h1>
-        <h2>
-             Developer
-        </h2>
-
-        <span>
-            <a href='https://x.com/OshanHarshad1' target='_blank' >
-                <img src={xIcon} alt='x_icon'/>
-            </a>
-            <a href='https://github.com/oshanh' target='_blank' >
-                <img src={githubIcon} alt='github_icon'/>
-            </a>
-            <a href='https://lk.linkedin.com/in/oshan-harshad-580a39258' target='_blank' >
-                <img src={linkedinIcon} alt='linkedin_icon'/>
-            </a>
-            
-        </span>
-        <p className={styles.description}>
-            Tech enthusiast with a passion for making software solutions for easyness.
-        </p>
-        <a href={CV} download>
-            <button className='hover'>
-                Resume
-            </button>    
-        </a>
-    </div>
-    </section>
-  )
+                <motion.a href={CV} target="_blank">
+                    <motion.button 
+                        className="hover"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                    >
+                        Resume
+                    </motion.button>
+                </motion.a>
+            </motion.div>
+        </motion.section>
+    );
 }
+
 export default Hero;
