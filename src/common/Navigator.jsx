@@ -1,35 +1,32 @@
 import React from 'react';
-import styles from  './NavigatorStyles.module.css';
+import { Link } from 'react-scroll';
+import styles from './NavigatorStyles.module.css';
 
 function Navigator() {
   return (
-
-    <div >
-      <div class={styles.container}>
-      <a href='#hero' title='Home'>
+    <div className={styles.container}>
+      <Link to="hero" smooth={true} duration={800} title="Home">
         <div className={styles.sections}>
-            <img src='home_ico.svg'/>
+          <img src="home_ico.svg" alt="Home" />
         </div>
-        </a>
-        <a href='#projects' title='Projects'>
+      </Link>
+      <Link to="projects" smooth={true} duration={800} title="Projects">
         <div className={styles.sections}>
-        <img src='Project_ico.png'/>
-
+          <img src="Project_ico.png" alt="Projects" />
         </div>
-        </a>
-        <a href='#skills' title='Skills'>
+      </Link>
+      <Link to="skills" smooth={true} duration={800} title="Skills">
         <div className={styles.sections}>
-        <img src='skill_ico.png'/>
+          <img src="skill_ico.png" alt="Skills" />
         </div>
-        </a>
-        <a href='#contact' title='Contact'>
+      </Link>
+      <Link to="contact" smooth={true} duration={800} title="Contact">
         <div className={styles.sections}>
-        <img src='contact_ico.png'/>
+          <img src="contact_ico.png" alt="Contact" />
         </div>
-        </a>
-      </div>
+      </Link>
     </div>
-  )
+  );
 }
 
-export default Navigator
+export default Navigator;
