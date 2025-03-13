@@ -23,7 +23,7 @@ function Contact() {
       </motion.h1>
 
       <motion.a 
-        href="https://wa.me/94759503445?text=Hello%20!%20Oshan'" 
+        href="https://wa.me/94759503445?text=Hello%20!%20Oshan" 
         target="_blank"
         whileHover={{ scale: 1.1, rotate: 5 }}
         whileTap={{ scale: 0.9 }}
