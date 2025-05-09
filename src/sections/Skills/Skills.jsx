@@ -67,13 +67,16 @@ function Skills() {
 
       <motion.div className={styles.skillList} variants={containerVariants}>
         <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="React" />
+          <SkillList src={checkMarkIcon} skill="React.Js" />
         </motion.div>
         <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="Bootstrap" />
+          <SkillList src={checkMarkIcon} skill="SpringBoot" />
         </motion.div>
         <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="Tailwind CSS" />
+          <SkillList src={checkMarkIcon} skill="Laravel" />
+        </motion.div>
+        <motion.div variants={skillVariants}>
+          <SkillList src={checkMarkIcon} skill="JavaFX" />
         </motion.div>
       </motion.div>
 
@@ -84,10 +87,10 @@ function Skills() {
           <SkillList src={checkMarkIcon} skill="Git" />
         </motion.div>
         <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="Laravel" />
+          <SkillList src={checkMarkIcon} skill="Docker" />
         </motion.div>
         <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="Node" />
+          <SkillList src={checkMarkIcon} skill="CI/CD" />
         </motion.div>
       </motion.div>
     </motion.section>
