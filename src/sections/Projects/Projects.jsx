@@ -7,6 +7,8 @@ import TradeManager from "../../assets/Projects/TradeMnager.png";
 import YouHeal from "../../assets/Projects/YouHeal.png";
 import RTC from "../../assets/Projects/RTC.png";
 import RuhSchedulEase from "../../assets/Projects/RuhSchedulEase.png";
+import DebitManager from "../../assets/Projects/DebitManager.png";
+
 
 function Projects() {
   // Animation Variants for Staggered Scaling
@@ -67,6 +69,9 @@ function Projects() {
 
         <motion.div variants={cardVariants}>
           <ProjectCard icon={RuhSchedulEase} link="https://github.com/gimhanadeshan/Group-Project-CSC2233" title="RuhSchedulEase" des="A web application for TimeTable Academic Management" />
+        </motion.div>
+        <motion.div variants={cardVariants}>
+          <ProjectCard icon={DebitManager} link="https://github.com/oshanh/DebitManager" title="Debit Manager" des="Track progress of your debtors, mark repayments. " />
         </motion.div>
       </motion.div>
     </motion.section>
