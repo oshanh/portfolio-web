@@ -4,7 +4,7 @@ import styles from './HeroStyles.module.css';
 import HeroImg from '../../assets/hero-img.png';
 import CV from '../../assets/cv.pdf';
 
-const roles = ['Full-Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Explorer'];
+const roles = ['Full-Stack Developer', 'Freelancer', 'Problem Solver', 'Tech Enthusiast'];
 
 function Hero() {
     const [roleIndex, setRoleIndex] = useState(0);
