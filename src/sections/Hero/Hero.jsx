@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styles from './HeroStyles.module.css';
-import HeroImg from '../../assets/hero-img.jpg';
+import HeroImg from '../../assets/hero-img.png';
 import CV from '../../assets/cv.pdf';
 
 const roles = ['Full-Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Explorer'];

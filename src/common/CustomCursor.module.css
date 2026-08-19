@@ -1,0 +1,54 @@
+.cursor {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    mix-blend-mode: difference;
+}
+
+.hidden .dot,
+.hidden .tail {
+    opacity: 0 !important;
+}
+
+/* Main dot */
+.dot {
+    position: fixed;
+    top: -6px;
+    left: -6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 0;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background: #fff;
+    transition: width 0.25s ease, height 0.25s ease, top 0.25s ease, left 0.25s ease, background 0.25s ease, clip-path 0.25s ease;
+    will-change: transform;
+}
+
+.dotHover {
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    left: -20px;
+    background: rgba(139, 92, 246, 0.5);
+}
+
+/* Tail segments */
+.tail {
+    position: fixed;
+    top: -4px;
+    left: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+    will-change: transform;
+    transition: opacity 0.1s ease;
+}
+
+/* Hide on small / touch screens */
+@media (max-width: 768px),
+(hover: none) {
+    .cursor {
+        display: none;
+    }
+}

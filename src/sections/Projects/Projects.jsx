@@ -4,7 +4,7 @@ import styles from './ProjectStyles.module.css';
 import ProjectCard from '../../common/ProjectCard';
 import projects from '../../data/ProjectData';
 
-const categories = ['All', 'Web', 'Desktop'];
+const categories = ['All', 'Web', 'Desktop', 'Mobile'];
 
 function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');

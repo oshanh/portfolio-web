@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ProjectDetail.module.css';
@@ -18,6 +18,10 @@ function ProjectDetail() {
     const project = projects.find(p => p.id === id);
     const [activeImg, setActiveImg] = useState(0);
     const videoId = project ? getYouTubeId(project.demoVideo) : null;
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
 
     if (!project) {
         return (
@@ -39,7 +43,7 @@ function ProjectDetail() {
             {/* Back button */}
             <motion.button
                 className={styles.backBtn}
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/', { state: { scrollTo: 'projects' } })}
                 whileHover={{ x: -4 }}
                 whileTap={{ scale: 0.95 }}
             >

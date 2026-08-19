@@ -39,11 +39,11 @@ function Navigator() {
   const handleNav = (id) => {
     setMobileOpen(false);
     if (!isHome) {
-      navigate('/');
+      navigate('/', { state: { scrollTo: id } });
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      }, 500);
     } else {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
