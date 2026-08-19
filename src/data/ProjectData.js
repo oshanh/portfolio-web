@@ -5,9 +5,16 @@ import RTC from '../assets/Projects/RTC.png';
 import RuhSchedulEase from '../assets/Projects/RuhSchedulEase.png';
 import DebitManager from '../assets/Projects/DebitManager.png';
 import JobNotifier from '../assets/Projects/job-notifier.png';
-import JobNotifier1 from '../assets/Projects/job-notifier-1.png';
-import JobNotifier2 from '../assets/Projects/job-notifier-2.png';
-import JobNotifier3 from '../assets/Projects/job-notifier-3.png';
+import JobNotifier1 from '../assets/Projects/job-notifier/job-notifier-1.png';
+import JobNotifier2 from '../assets/Projects/job-notifier/job-notifier-2.png';
+import JobNotifier3 from '../assets/Projects/job-notifier/job-notifier-3.png';
+import OceanTools from '../assets/Projects/oceantools.png';
+import OceanTools1 from '../assets/Projects/oceantools/oceantools-1.png';
+import OceanTools2 from '../assets/Projects/oceantools/oceantools-2.png';
+import OceanTools3 from '../assets/Projects/oceantools/oceantools-3.png';
+import OceanTools4 from '../assets/Projects/oceantools/oceantools-4.png';
+import OceanTools5 from '../assets/Projects/oceantools/oceantools-5.png';
+import OceanTools6 from '../assets/Projects/oceantools/oceantools-6.png';
 
 const projects = [
     {
@@ -22,6 +29,21 @@ const projects = [
         category: 'Web',
         githubLink: 'https://github.com/oshanh/job-notifier',
         demoLink: null,
+        demoVideo: null,
+        featured: true,
+    },
+    {
+        id:'ocean-tools',
+        title: 'Ocean Tools',
+        shortDescription: 'Ocean tools web application built with React.js.',
+        fullDescription:
+            'Ocean tools is a collection of online tools that allows users to perform various tasks.',
+        thumbnail: OceanTools,
+        screenshots: [OceanTools1,OceanTools2,OceanTools3,OceanTools4,OceanTools5,OceanTools6],
+        techStack: ['React.js'],
+        category: 'Web',
+        githubLink: 'https://github.com/oshanh/OceanTools',
+        demoLink: 'https://oceantools.netlify.app/',
         demoVideo: null,
         featured: true,
     },
