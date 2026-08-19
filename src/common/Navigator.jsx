@@ -36,7 +36,8 @@ function Navigator() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHome]);
 
-  const handleNav = (id) => {
+  const handleNav = (e, id) => {
+    e.preventDefault();
     setMobileOpen(false);
     if (!isHome) {
       navigate('/', { state: { scrollTo: id } });
@@ -55,8 +56,9 @@ function Navigator() {
     >
       <div className={styles.inner}>
         <motion.a
+          href="#hero"
           className={styles.logo}
-          onClick={() => handleNav('hero')}
+          onClick={(e) => handleNav(e, 'hero')}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -68,8 +70,9 @@ function Navigator() {
           {navLinks.map(link => (
             <motion.a
               key={link.id}
+              href={`#${link.id}`}
               className={`${styles.link} ${activeSection === link.id ? styles.activeLink : ''}`}
-              onClick={() => handleNav(link.id)}
+              onClick={(e) => handleNav(e, link.id)}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -110,8 +113,9 @@ function Navigator() {
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.id}
+                href={`#${link.id}`}
                 className={styles.mobileLink}
-                onClick={() => handleNav(link.id)}
+                onClick={(e) => handleNav(e, link.id)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.08 }}

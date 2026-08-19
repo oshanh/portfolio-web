@@ -12,7 +12,7 @@ function Footer() {
           <p className={styles.copy}>&copy; {year} Oshan Harshad. All rights reserved.</p>
         </div>
         <p className={styles.made}>
-          Made with <span className={styles.heart}>❤️</span> using React
+          Developed by <span className={styles.heart}>&nbsp;Oshan</span> 
         </p>
       </div>
     </footer>
