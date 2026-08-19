@@ -15,22 +15,27 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/' && location.state?.scrollTo) {
-      // Wait for framer-motion AnimatePresence exit transition (0.4s)
-      setTimeout(() => {
-        const el = document.getElementById(location.state.scrollTo);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 500);
-    } else if (location.pathname === '/' && !location.hash && !location.state?.scrollTo) {
+    if (location.pathname === '/' && !location.hash && !location.state?.scrollTo) {
       window.scrollTo(0, 0);
     }
   }, [location]);
+
+  const handleExitComplete = () => {
+    if (location.pathname === '/' && location.state?.scrollTo) {
+      setTimeout(() => {
+        const el = document.getElementById(location.state.scrollTo);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 50); // slight delay to ensure DOM is painted after exit
+    } else if (location.pathname !== '/') {
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <>
       <CustomCursor />
       <Navigator />
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
         <Routes location={location} key={location.pathname}>
           <Route
             path="/"

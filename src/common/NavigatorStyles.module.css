@@ -59,9 +59,11 @@
     border-radius: var(--radius-sm);
 }
 
-.link:hover {
-    color: var(--text-primary);
-    background: var(--bg-card);
+@media (hover: hover) {
+    .link:hover {
+        color: var(--text-primary);
+        background: var(--bg-card);
+    }
 }
 
 .activeLink {
@@ -131,10 +133,12 @@
     border-radius: var(--radius-sm);
 }
 
-.mobileLink:hover {
-    color: var(--text-primary);
-    background: var(--bg-card);
-    padding-left: 32px;
+@media (hover: hover) {
+    .mobileLink:hover {
+        color: var(--text-primary);
+        background: var(--bg-card);
+        padding-left: 32px;
+    }
 }
 
 @media (max-width: 768px) {

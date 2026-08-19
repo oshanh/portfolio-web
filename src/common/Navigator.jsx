@@ -40,10 +40,6 @@ function Navigator() {
     setMobileOpen(false);
     if (!isHome) {
       navigate('/', { state: { scrollTo: id } });
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 500);
     } else {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -52,7 +48,7 @@ function Navigator() {
 
   return (
     <motion.nav
-      className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}
+      className={`${styles.nav} ${scrolled || mobileOpen ? styles.scrolled : ''}`}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
