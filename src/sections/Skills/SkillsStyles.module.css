@@ -1,47 +1,82 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  
-    span {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-  
-    img {
-      width: 20px;
-    }
+  padding: var(--section-padding);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Categories grid */
+.categories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .categories {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  .skillList {
-    display: flex;
-    justify-content: space-evenly;
-    align-self: center;
-    flex-wrap: wrap;
-    row-gap: 40px;
-    max-width: 26ch;
-  }
-  
-  hr {
-    width: 100px;
-    height: 1px;
-    border: none;
-    background-color: var(--text-color);
-    margin: 30px auto;
-  }
-  
-  @media (width >= 800px) {
-    .skillList {
-      max-width: fit-content;
-      gap: 30px;
-  
-      p {
-        font-size: 20px;
-      }
-    }
-  
-    hr {
-      width: 300px;
-    }
-  }
+}
+
+/* Category card */
+.categoryCard {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: var(--transition-smooth);
+}
+
+.categoryCard:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: var(--shadow-glow-violet);
+}
+
+.categoryTitle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--glass-border);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Skill pills */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: default;
+  transition: var(--transition-fast);
+}
+
+.pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.pillIcon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.pillName {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}

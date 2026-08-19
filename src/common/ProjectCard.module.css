@@ -1,0 +1,148 @@
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: var(--shadow-glow-violet);
+}
+
+/* Image */
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+    transform: scale(1.08);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(10, 10, 15, 0.9) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 16px;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+.viewBtn {
+    padding: 6px 20px;
+    border-radius: var(--radius-full);
+    background: var(--accent-gradient);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Body */
+.body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.categoryBadge {
+    align-self: flex-start;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    background: rgba(6, 182, 212, 0.12);
+    color: var(--accent-cyan);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    flex: 1;
+}
+
+/* Tech badges */
+.techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.techBadge {
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--accent-violet);
+    font-size: 0.7rem;
+    font-weight: 500;
+    border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+/* Links */
+.links {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 14px;
+}
+
+.linkBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: var(--transition-fast);
+    text-decoration: none;
+}
+
+.linkBtn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-violet);
+    background: var(--bg-card-hover);
+}
+
+.demoBtn:hover {
+    border-color: var(--accent-cyan);
+}

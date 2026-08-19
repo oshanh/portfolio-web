@@ -1,99 +1,92 @@
-import { motion } from "framer-motion";
-import styles from "./SkillsStyles.module.css";
-import checkMarkIconDark from "../../assets/checkmark-dark.svg";
-import checkMarkIconLight from "../../assets/checkmark-light.svg";
-import SkillList from "../../common/SkillList";
-import { useTheme } from "../../common/ThemeContext";
+import React from 'react';
+import { motion } from 'framer-motion';
+import styles from './SkillsStyles.module.css';
+
+const skillCategories = [
+  {
+    title: 'Languages',
+    skills: [
+      { name: 'JavaScript', icon: '⚡' },
+      { name: 'Java', icon: '☕' },
+      { name: 'HTML', icon: '🌐' },
+      { name: 'CSS', icon: '🎨' },
+      { name: 'C', icon: '⚙️' },
+      { name: 'PHP', icon: '🐘' },
+    ],
+  },
+  {
+    title: 'Frameworks',
+    skills: [
+      { name: 'React.js', icon: '⚛️' },
+      { name: 'Spring Boot', icon: '🍃' },
+      { name: 'Laravel', icon: '🔺' },
+      { name: 'JavaFX', icon: '🖥️' },
+    ],
+  },
+  {
+    title: 'Tools & DevOps',
+    skills: [
+      { name: 'Git', icon: '📦' },
+      { name: 'Docker', icon: '🐳' },
+      { name: 'CI/CD', icon: '🔄' },
+      { name: 'MySQL', icon: '🗄️' },
+    ],
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const pillVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+};
 
 function Skills() {
-  const { theme } = useTheme();
-  const checkMarkIcon = theme === "light" ? checkMarkIconLight : checkMarkIconDark;
-
-  // Container animation for staggered effect
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2, // Delay between each skill animation
-      },
-    },
-  };
-
-  // Individual skill animation
-  const skillVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    show: { scale: 1, opacity: 1, transition: { duration: 0.4 } },
-  };
-
   return (
-    <motion.section
-      id="skills"
+    <motion.div
       className={styles.container}
       initial="hidden"
       whileInView="show"
       variants={containerVariants}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: '-50px' }}
     >
-      <motion.h1 
-        className="sectionTitle"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        Skills
-      </motion.h1>
+      <h2 className="sectionTitle">Skills & Technologies</h2>
 
-      {/* Skill Sections with Staggered Animation */}
-      <motion.div className={styles.skillList} variants={containerVariants}>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="HTML" />
-        </motion.div>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="CSS" />
-        </motion.div>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="JavaScript" />
-        </motion.div>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="JAVA" />
-        </motion.div>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="C" />
-        </motion.div>
-      </motion.div>
-
-      <hr />
-
-      <motion.div className={styles.skillList} variants={containerVariants}>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="React.Js" />
-        </motion.div>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="SpringBoot" />
-        </motion.div>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="Laravel" />
-        </motion.div>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="JavaFX" />
-        </motion.div>
-      </motion.div>
-
-      <hr />
-
-      <motion.div className={styles.skillList} variants={containerVariants}>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="Git" />
-        </motion.div>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="Docker" />
-        </motion.div>
-        <motion.div variants={skillVariants}>
-          <SkillList src={checkMarkIcon} skill="CI/CD" />
-        </motion.div>
-      </motion.div>
-    </motion.section>
+      <div className={styles.categories}>
+        {skillCategories.map((cat, i) => (
+          <motion.div key={i} className={styles.categoryCard} variants={cardVariants}>
+            <h3 className={styles.categoryTitle}>{cat.title}</h3>
+            <motion.div
+              className={styles.pills}
+              variants={containerVariants}
+            >
+              {cat.skills.map((skill, j) => (
+                <motion.div
+                  key={j}
+                  className={styles.pill}
+                  variants={pillVariants}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                >
+                  <span className={styles.pillIcon}>{skill.icon}</span>
+                  <span className={styles.pillName}>{skill.name}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
   );
 }
 

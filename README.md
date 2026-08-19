@@ -1,3 +1,3 @@
 # My portfolio website
 
-www.oshan.me
+www.oshanh.netlify.app

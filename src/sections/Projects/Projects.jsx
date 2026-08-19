@@ -1,80 +1,68 @@
-import React from "react";
-import { motion } from "framer-motion";
-import styles from "./ProjectStyles.module.css";
-import ExploreWild from "../../assets/Projects/ExploreWild.png";
-import ProjectCard from "../../common/ProjectCard";
-import TradeManager from "../../assets/Projects/TradeMnager.png";
-import YouHeal from "../../assets/Projects/YouHeal.png";
-import RTC from "../../assets/Projects/RTC.png";
-import RuhSchedulEase from "../../assets/Projects/RuhSchedulEase.png";
-import DebitManager from "../../assets/Projects/DebitManager.png";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import styles from './ProjectStyles.module.css';
+import ProjectCard from '../../common/ProjectCard';
+import projects from '../../data/ProjectData';
 
+const categories = ['All', 'Web', 'Desktop'];
 
 function Projects() {
-  // Animation Variants for Staggered Scaling
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: { 
-      opacity: 1, 
-      transition: { 
-        staggerChildren: 0.3 // Delay between each card animation
-      } 
-    }
-  };
+  const [activeCategory, setActiveCategory] = useState('All');
 
-  const cardVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    show: { 
-      scale: 1, 
-      opacity: 1, 
-      transition: { duration: 0.5 }
-    }
-  };
+  const filtered = activeCategory === 'All'
+    ? projects
+    : projects.filter(p => p.category === activeCategory);
 
   return (
-    <motion.section 
-      id="projects" 
+    <motion.div
       className={styles.container}
-      initial="hidden"
-      whileInView="show"
-      variants={containerVariants}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
       viewport={{ once: true }}
     >
-      <motion.h1 
-        className="sectionTitle"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        Projects
-      </motion.h1>
+      <h2 className="sectionTitle">Featured Projects</h2>
 
-      <motion.div className={styles.projectsContainer} variants={containerVariants}>
-        {/* Project Cards with Staggered Scaling Animation */}
-        <motion.div variants={cardVariants}>
-          <ProjectCard icon={ExploreWild} link="https://github.com/oshanh/explorewild_JavaFX" title="ExploreWild" des="Zoo Management Application using JAVAFX" />
-        </motion.div>
+      {/* Filter tabs */}
+      <div className={styles.filters}>
+        {categories.map(cat => (
+          <motion.button
+            key={cat}
+            className={`${styles.filterBtn} ${activeCategory === cat ? styles.filterActive : ''}`}
+            onClick={() => setActiveCategory(cat)}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {cat}
+            {activeCategory === cat && (
+              <motion.span
+                className={styles.filterIndicator}
+                layoutId="filterIndicator"
+                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+              />
+            )}
+          </motion.button>
+        ))}
+      </div>
 
-        <motion.div variants={cardVariants}>
-          <ProjectCard icon={TradeManager} link="https://github.com/oshanh/TradeManager" title="TradeManager" des="USD buy & sell using Java" />
-        </motion.div>
-
-        <motion.div variants={cardVariants}>
-          <ProjectCard icon={YouHeal} link="https://github.com/oshanh/Hospital-website" title="YouHeal Website" des="Website for a Hospital using pure HTML, CSS & JS" />
-        </motion.div>
-
-        <motion.div variants={cardVariants}>
-          <ProjectCard icon={RTC} link="https://github.com/SPradeepIndie/MOSAD" title="RTC" des="An E-Business web application for Rashmi Tyre Center" />
-        </motion.div>
-
-        <motion.div variants={cardVariants}>
-          <ProjectCard icon={RuhSchedulEase} link="https://github.com/gimhanadeshan/Group-Project-CSC2233" title="RuhSchedulEase" des="A web application for TimeTable Academic Management" />
-        </motion.div>
-        <motion.div variants={cardVariants}>
-          <ProjectCard icon={DebitManager} link="https://github.com/oshanh/DebitManager" title="Debit Manager" des="Track progress of your debtors, mark repayments. " />
-        </motion.div>
+      {/* Project grid */}
+      <motion.div className={styles.grid} layout>
+        <AnimatePresence mode="popLayout">
+          {filtered.map(project => (
+            <motion.div
+              key={project.id}
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </motion.div>
-    </motion.section>
+    </motion.div>
   );
 }
 

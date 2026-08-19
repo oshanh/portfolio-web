@@ -1,39 +1,37 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Element } from 'react-scroll';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
-import './App.css';
 import Hero from './sections/Hero/Hero';
 import Projects from './sections/Projects/Projects';
 import Skills from './sections/Skills/Skills';
 import Contact from './sections/Contact/Contact';
 import Footer from './sections/Footer/Footer';
 import Navigator from './common/Navigator';
+import ProjectDetail from './Pages/ProjectDetail';
 
 function App() {
+  const location = useLocation();
+
   return (
     <>
       <Navigator />
-      <motion.div
-        id="sections"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <Element name="hero">
-          <Hero />
-        </Element>
-        <Element name="projects">
-          <Projects />
-        </Element>
-        <Element name="skills">
-          <Skills />
-        </Element>
-        <Element name="contact">
-          <Contact />
-        </Element>
-        <Footer />
-      </motion.div>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <main className="sectionsContainer">
+                <section id="hero"><Hero /></section>
+                <section id="projects"><Projects /></section>
+                <section id="skills"><Skills /></section>
+                <section id="contact"><Contact /></section>
+                <Footer />
+              </main>
+            }
+          />
+          <Route path="/project/:id" element={<ProjectDetail />} />
+        </Routes>
+      </AnimatePresence>
     </>
   );
 }
