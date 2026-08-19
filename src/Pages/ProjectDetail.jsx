@@ -17,6 +17,7 @@ function ProjectDetail() {
     const navigate = useNavigate();
     const project = projects.find(p => p.id === id);
     const [activeImg, setActiveImg] = useState(0);
+    const [viewerOpen, setViewerOpen] = useState(false);
     const videoId = project ? getYouTubeId(project.demoVideo) : null;
 
     useEffect(() => {
@@ -55,16 +56,25 @@ function ProjectDetail() {
             <div className={styles.heroBanner}>
                 <div className={styles.heroBannerOverlay} />
                 <AnimatePresence mode="wait">
-                    <motion.img
+                    <motion.div
                         key={activeImg}
-                        src={project.screenshots[activeImg]}
-                        alt={`${project.title} screenshot`}
-                        className={styles.heroBannerImg}
+                        className={styles.heroImgWrapper}
                         initial={{ opacity: 0, scale: 1.05 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.4 }}
-                    />
+                        onClick={() => setViewerOpen(true)}
+                        style={{ width: '100%', height: '100%', cursor: 'zoom-in' }}
+                    >
+                        <img
+                            src={project.screenshots[activeImg]}
+                            alt={`${project.title} screenshot`}
+                            className={styles.heroBannerImg}
+                        />
+                        <div className={styles.expandHint}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 3 21 3 21 9" /><polyline points="9 21 3 21 3 15" /><line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" /></svg>
+                        </div>
+                    </motion.div>
                 </AnimatePresence>
                 <div className={styles.heroBannerContent}>
                     <span className={styles.categoryTag}>{project.category}</span>
@@ -100,7 +110,10 @@ function ProjectDetail() {
                                     <motion.div
                                         key={i}
                                         className={`${styles.galleryItem} ${activeImg === i ? styles.galleryItemActive : ''}`}
-                                        onClick={() => setActiveImg(i)}
+                                        onClick={() => {
+                                            setActiveImg(i);
+                                            setViewerOpen(true);
+                                        }}
                                         whileHover={{ scale: 1.03 }}
                                     >
                                         <img src={img} alt={`Screenshot ${i + 1}`} />
@@ -174,6 +187,53 @@ function ProjectDetail() {
                     </div>
                 </motion.aside>
             </div>
+
+            {/* Fullscreen Image Viewer Modal */}
+            <AnimatePresence>
+                {viewerOpen && (
+                    <motion.div
+                        className={styles.viewerOverlay}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setViewerOpen(false)}
+                    >
+                        <button className={styles.viewerClose} onClick={() => setViewerOpen(false)}>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                        </button>
+
+                        <img
+                            src={project.screenshots[activeImg]}
+                            alt={`${project.title} full screenshot`}
+                            className={styles.viewerImg}
+                            onClick={(e) => e.stopPropagation()}
+                        />
+
+                        {project.screenshots.length > 1 && (
+                            <>
+                                <button
+                                    className={`${styles.viewerNavBtn} ${styles.viewerPrev}`}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setActiveImg(i => i === 0 ? project.screenshots.length - 1 : i - 1);
+                                    }}
+                                >
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
+                                </button>
+                                <button
+                                    className={`${styles.viewerNavBtn} ${styles.viewerNext}`}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setActiveImg(i => i === project.screenshots.length - 1 ? 0 : i + 1);
+                                    }}
+                                >
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
+                                </button>
+                            </>
+                        )}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.div>
     );
 }

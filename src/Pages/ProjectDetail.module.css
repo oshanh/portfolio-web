@@ -276,3 +276,135 @@
 .demoLink:hover {
     border-color: var(--accent-cyan);
 }
+
+/* Image Viewer Additions */
+.heroImgWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: zoom-in;
+}
+
+.expandHint {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: var(--transition-fast);
+    z-index: 5;
+}
+
+.heroImgWrapper:hover .expandHint {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.viewerOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.viewerImg {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    background: #000;
+}
+
+.viewerClose {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    z-index: 10001;
+}
+
+.viewerClose:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.viewerNavBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    z-index: 10001;
+}
+
+.viewerNavBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.viewerPrev {
+    left: 30px;
+}
+
+.viewerNext {
+    right: 30px;
+}
+
+@media (max-width: 768px) {
+    .viewerClose {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .viewerNavBtn {
+        width: 45px;
+        height: 45px;
+    }
+
+    .viewerPrev {
+        left: 10px;
+    }
+
+    .viewerNext {
+        right: 10px;
+    }
+}
